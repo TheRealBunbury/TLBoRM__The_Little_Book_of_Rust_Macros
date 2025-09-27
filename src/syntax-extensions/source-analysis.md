@@ -81,7 +81,7 @@ trees; more specifically, they are *leaves*. There is one other kind of thing th
 tree leaf, but we will come back to that later.
 
 The only basic tokens that are *not* leaves are the "grouping" tokens: `(...)`, `[...]`, and `{...}`.
-These three are the *interior nodes* of token trees, and what give them their structure. To give a
+These three are the *interior nodes* of token trees, and what gives them their structure. To give a
 concrete example, this sequence of tokens:
 
 ```text
