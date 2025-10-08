@@ -1,9 +1,8 @@
 # The Little Book of Rust Macros (TLBoRM)
 
-### **Note Bene**: This version of the Little Book of Rust Macros is a fork of Veykril's instance of TLBoRM, which itself is a continuation of [Daniel Keep's original TLBoRM text](https://github.com/DanielKeep/tlborm).
+### **Note Bene**: This version of the Little Book of Rust Macros is a fork of [Veykril's instance of TLBoRM](https://github.com/veykril/tlborm), which itself is a continuation of [Daniel Keep's original TLBoRM text](https://github.com/DanielKeep/tlborm).
 
 > Veykril's version of TLBoRM, in its current form, is incomplete; this repo is a space for the Dallas Rust Users Group's collaborative efforts to update & expand TLBoRM as we read through the Manning book [Write Powerful Rust Macros, written by Sam Overmeire](https://mng.bz/gmY8).
-> [mdBook](https://github.com/rust-lang/mdBook).
 
 View the [rendered version of Veykril's TLBoRM here](https://veykril.github.io/tlborm/) and the [repository here](https://github.com/veykril/tlborm).
 
