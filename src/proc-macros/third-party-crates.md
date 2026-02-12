@@ -4,7 +4,7 @@
 > The crates listed here merely make writing them simpler and more concise, while potentially adding to the compilation time of the procedural macro due to added dependencies.
 
 As procedural macros live in a crate they can naturally depend on ([crates.io](https://crates.io/)) crates.
-turns out the crate ecosystem has some really helpful crates tailored towards procedural macros that this chapter will quickly go over, most of which will be used in the following chapters to implement the example macros.
+It turns out the crate ecosystem has some really helpful crates tailored towards procedural macros that this chapter will quickly go over, most of which will be used in the following chapters to implement the example macros.
 As these are merely quick introductions it is advised to look at each crate's documentation for more in-depth information if required.
 
 ## [`proc-macro2`]
@@ -17,9 +17,9 @@ This crate is actually just a wrapper around the [`proc_macro`] crate serving tw
 As the [`proc_macro`] crate is exclusive to [`proc_macro`] type crates, making them unit testable or accessing them from non-proc macro code is next to impossible.
 With that in mind the [`proc-macro2`] crate mimics the original [`proc_macro`] crate's api, acting as a wrapper in proc-macro crates and standing on its own in non-proc-macro crates.
 Hence it is advised to build libraries targeting proc-macro code to be built against [`proc-macro2`] instead as that will enable those libraries to be unit testable, which is also the reason why the following listed crates take and emit [`proc-macro2::TokenStream`](https://docs.rs/proc-macro2/1.0.27/proc_macro2/struct.TokenStream.html)s instead.
-When a `proc_macro` token stream is required, one can simply `.into()` the `proc-macro2` token stream to get the `proc_macro` version and vice-versa.
+When a `proc_macro` token stream is required, one can simply `.into()` the `proc_macro2` token stream to get the `proc_macro` version and vice-versa.
 
-Procedural macros using the `proc-macro2` crate will usually import the `proc-macro2::TokenStream` in an aliased form like `use proc-macro2::TokenStream as TokenStream2`.
+Procedural macros using the `proc-macro2` crate will usually import the `proc_macro2::TokenStream` in an aliased form like `use proc_macro2::TokenStream as TokenStream2`.
 
 ## [`quote`]
 
@@ -43,7 +43,7 @@ let expanded = quote! {
 
 This a very useful tool when preparing macro output avoiding the need of creating a token stream by inserting tokens one by one.
 
-> **Note**: As stated earlier, this crate makes use of `proc_macro2` and thus the `quote!` macro returns a `proc-macro2::TokenStream`.
+> **Note**: As stated earlier, this crate makes use of `proc_macro2` and thus the `quote!` macro returns a `proc_macro2::TokenStream`.
 
 ## [`syn`](https://docs.rs/syn/*/syn/)
 
@@ -53,9 +53,9 @@ As the library can be a heavy compilation dependency, it makes heavy use of feat
 
 So what does it offer? A bunch of things.
 
-First of all it has definitions and parsing for all standard Rust syntax nodes(when the `full` feature is enabled), as well as a [`DeriveInput`](https://docs.rs/syn/1/syn/struct.DeriveInput.html) type which encapsulates all the information a derive macro gets passed as an input stream as a structured input(requires the `derive` feature, enabled by default). These can be used right out of the box with the [`parse_macro_input!`](https://docs.rs/syn/1/syn/macro.parse_macro_input.html) macro(requires the `parsing` and `proc-macro` features, enabled by default) to parse token streams into these types.
+First of all it has definitions and parsing for all standard Rust syntax nodes (when the `full` feature is enabled), as well as a [`DeriveInput`](https://docs.rs/syn/1/syn/struct.DeriveInput.html) type which encapsulates all the information a derive macro gets passed as an input stream as a structured input(requires the `derive` feature, enabled by default). These can be used right out of the box with the [`parse_macro_input!`](https://docs.rs/syn/1/syn/macro.parse_macro_input.html) macro to parse token streams into these types (this requires the `parsing` and `proc-macro` features, enabled by default).
 
-If Rust syntax doesn't cut it, and instead one wishes to parse custom non-Rust syntax the crate also offers a generic [parsing API](https://docs.rs/syn/1/syn/parse/index.html), mainly in the form of the [`Parse`](https://docs.rs/syn/1/syn/parse/trait.Parse.html) trait(requires the `parsing` feature, enabled by default).
+If Rust syntax doesn't cut it, and instead one wishes to parse custom non-Rust syntax the crate also offers a generic [parsing API](https://docs.rs/syn/1/syn/parse/index.html), mainly in the form of the [`Parse`](https://docs.rs/syn/1/syn/parse/trait.Parse.html) trait (requires the `parsing` feature, enabled by default).
 
 Aside from this the types exposed by the library keep location information and spans which allows procedural macros to emit detailed error messages pointing at the macro input at the points of interest.
 
